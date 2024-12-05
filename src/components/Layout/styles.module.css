@@ -1,0 +1,141 @@
+.bottomstatus-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 96px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient(white, silver);
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.text-styles{
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1rem;
+    letter-spacing: 3px;
+}
+
+.button-bg{
+    background-image: linear-gradient(to right, #5238ee , #7e007d);
+    padding: 0.8rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.topstatus-container{
+    padding: 0.8rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr; 
+    align-items: center;
+    gap: 8px;
+}
+
+.stepCard-next {
+    padding: 0.8rem;
+    border: 1px solid gray;
+    border-radius: 10px;
+    min-height: auto;
+    height:124px;
+}
+
+.stepCard-next h6{
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.stepCard-next p{
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.stepCard-current {
+    padding: 0.8rem;
+    border: 1px solid #c0b9f8;
+    border-radius: 10px;
+    background-color: #edebfb;
+    height:144px;
+}
+
+.stepCard-current h6{
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.stepCard-current p{
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+.stepCard-prev {
+    padding: 0.8rem;
+    border: 2px solid #a7dcaa;
+    border-radius: 10px;
+    min-height: auto;
+    height:124px;
+}
+
+.stepCard-prev h6{
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+.stepCard-prev p{
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 768px){
+    .stepCard-current{
+        padding: 0.8rem;
+        border: 1px solid #c0b9f8;
+        border-radius: 10px;
+        background-color: #edebfb;
+        height:144px;
+    }
+    .stepCard-current h6{
+        font-size: 0.9rem;
+    }
+    .stepCard-current p{
+        font-size: 0.8rem;
+    }
+
+    .stepCard-prev {
+        padding: 0.8rem;
+        border: 2px solid #a7dcaa;
+        border-radius: 10px;
+        min-height: auto;
+        height:124px;
+    }
+    .stepCard-prev h6{
+        font-size: 0.9rem;
+    }
+    .stepCard-prev p{
+        font-size: 0.8rem;
+    }
+
+
+    .stepCard-next {
+        padding: 0.8rem;
+        border: 1px solid gray;
+        border-radius: 10px;
+        min-height: auto;
+        height:124px;
+    }
+    .stepCard-next h6{
+        font-size: 0.9rem;
+    }
+    .stepCard-next p{
+        font-size: 0.8rem;
+    }
+}
