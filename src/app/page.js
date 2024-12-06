@@ -16,9 +16,9 @@ export default async function Home() {
   return (
     <>
       <div className="table-container flex text-style  items-center w-full  p-4 relative">
-        <Link href={"/interview"} className="absolute right-0 top-2">
+        <Link href={"/create-interview"} className="absolute right-0 top-2">
           <Button variant="outlined" size="md">
-            Create a Interview Questions
+            Create a Interview
           </Button>
         </Link>
       </div>

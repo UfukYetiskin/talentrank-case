@@ -1,16 +1,18 @@
 import React from 'react'
-import Link from 'next/link'
-import styles from "./styles.module.css"
-function BottomFormRouteStatus({currentStep}) {
+import styles from "./styles.module.scss"
+
+function BottomFormRouteStatus({ currentStep, nextButtonHandleClick, backButtonHandleClick }) {
   return (
     <div className={styles["bottomstatus-container"]}>
-        <Link href="/" className={`${styles["text-styles"]} `} >
-            {"<"} ADD INTERVIEW BACK
-        </Link>
-        <div className={styles["button-container"]}>
-            <button className={styles["text-styles"]}>DRAFT</button>
-            <button className={`${styles["text-styles"]} ${styles["button-bg"]} ml-4 `}>PROCEED</button>
-        </div>
+      <button onClick={() => backButtonHandleClick()} disabled={currentStep > 1 ? false : true}  className={styles["text-styles"]}>
+        {"<"} BACK
+      </button>
+      <div className={styles["button-container"]}>
+        <button className={styles["text-styles"]}>DRAFT</button>
+        <button onClick={() => nextButtonHandleClick()} className={`${styles["text-styles"]} ${styles["button-bg"]} ml-4`}>
+          PROCEED
+        </button>
+      </div>
     </div>
   )
 }
