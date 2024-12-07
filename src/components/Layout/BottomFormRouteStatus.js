@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "./styles.module.scss"
 
-function BottomFormRouteStatus({ currentStep, nextButtonHandleClick, backButtonHandleClick, postRequestToFirebase, updateData }) {
+function BottomFormRouteStatus({ currentStep, nextButtonHandleClick, backButtonHandleClick, postRequestToFirebase }) {
   return (
     <div className={styles["bottomstatus-container"]}>
       <button onClick={() => backButtonHandleClick()} disabled={currentStep > 1 ? false : true}  className={styles["text-styles"]}>

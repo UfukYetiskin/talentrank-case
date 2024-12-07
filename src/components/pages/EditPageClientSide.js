@@ -98,20 +98,6 @@ function EditPageForm({data}) {
         }
       };
 
-    const updateData = async (id) => {
-        const isValidationFailed = validateSteps();
-        if (isValidationFailed) return; 
-        try {
-          const updatedData = {
-            title: "Updated Title",
-            content: "Updated content",
-          };
-          await updateDocument("myCollection", id, updatedData);
-          console.log("Document updated successfully.");
-        } catch (error) {
-          console.error("Error updating data:", error);
-        }
-    };
     
     const backButtonHandleClick = () => {
         console.log("Tıklandı!");
@@ -143,7 +129,7 @@ function EditPageForm({data}) {
                 }
                 
             </form>
-            <BottomFormRouteStatus postRequestToFirebase={postRequestToFirebase} updateData={updateData}   backButtonHandleClick={backButtonHandleClick} nextButtonHandleClick={nextButtonHandleClick} currentStep={currentStepStatus}  />
+            <BottomFormRouteStatus postRequestToFirebase={postRequestToFirebase}  backButtonHandleClick={backButtonHandleClick} nextButtonHandleClick={nextButtonHandleClick} currentStep={currentStepStatus}  />
         </div>
 
     )
