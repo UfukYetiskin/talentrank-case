@@ -5,6 +5,8 @@ import { Button } from "@mui/material";
 import Image from "next/image";
 import eyeIcon from "@/public/icons/eye-scan-svgrepo-com.svg"
 import deleteIcon from "@/public/icons/delete-svgrepo-com.svg"
+import TableRowCard from "@/components/Cards/tablerowCard";
+
 export const getDocs = async () => {
   const data = await getAllDocs("talentrank-b1592");
   console.log("Documents", data);
@@ -28,29 +30,11 @@ export default async function Home() {
           <div className="table-cell">Content</div>
           <div className="table-cell table-actions">Actions</div>
         </div>
-        <div className="table-row">
-          <div className="table-cell">Content</div>
-          <div className="table-cell">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-          <div className="table-cell table-actions  items-center">
-            <i className="icon-edit"><Link href={"/"}>
-              <Image alt="Icon" src={eyeIcon} width={24} height={24} />
-            </Link></i>
-            <i className="icon-delete">
-            <Link href={"/"}>
-              <Image alt="Icon" src={deleteIcon} width={24} height={24} />
-            </Link>
-            </i>
-          </div>
-        </div>
-
-        <div className="table-row">
-          <div className="table-cell">Actions</div>
-          <div className="table-cell">Ali Veli'nin maceraları</div>
-          <div className="table-cell table-actions">
-            <i className="icon-edit">✏️</i>
-            <i className="icon-delete">❌</i>
-          </div>
-        </div>
+        {
+          getData && getData.map((item, key) => {
+            return <div key={key}><TableRowCard item={item} /></div>
+          })
+        }
       </div>
 
     </>

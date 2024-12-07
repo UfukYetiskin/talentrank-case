@@ -8,57 +8,14 @@ import JobDetail from '@/components/Form/jobDetail'
 import QuestionsList from '@/components/Form/questionsList'
 import { setFormData } from '@/store/slices/formDataSlice'
 import Summary from '@/components/Form/summary'
-import { addDocument, updateDocument } from '@/services/firestoreServices'
+import { addDocument, updateDocById, updateDocument } from '@/services/firestoreServices'
 import { addDoc, collection } from 'firebase/firestore'
 import { storage } from '@/utils/firebase'
 import { useRouter } from 'next/navigation'
 
-function Page() {
+function EditPageForm({data}) {
     const router = useRouter();
-    const [formDataState, setFormDataState] = useState({
-        title: "",
-        description: "",
-        interviewDuration: "",
-        jobLocation: "",
-        questions: [
-            {
-                id:1,
-                questionNo: 1,
-                question: "How has your education prepared you for this position?",
-                questionScore: "0"
-            },
-            {
-                id:2,
-                questionNo: 2,
-                question: "What single project or task would you consider the most significant accomplishment in your career so far?",
-                questionScore: "0"
-            },
-            {
-                id:3,
-                questionNo: 3,
-                question: "Tell me about a problem you faced recently where you were unsure of the answer. How did you research the problem and find a correct solution?",
-                questionScore: "0"
-            },
-            {
-                id:4,
-                questionNo: 4,
-                question: "What area of engineering do you find most challenging?",
-                questionScore: "0"
-            },
-            {
-                id:5,
-                questionNo: 5,
-                question: "Describe the most significant written technical report or presentation that you had to complete.",
-                questionScore: "0"
-            },
-            {
-                id:6,
-                questionNo: 6,
-                question: "Tell me about the most challenging engineering project that you have been involved with during the past year.",
-                questionScore: "0"
-            }
-        ]
-    });
+    const [formDataState, setFormDataState] = useState(data);
     const [currentStepStatus, setCurrentStepStatus] = useState(1);
     const [errorMessage, setErrorMessage] = useState({
         title: "",
@@ -68,19 +25,15 @@ function Page() {
         questions: "",
     });
 
-    const formData = useSelector((state) => state.formData);
     const dispatch = useDispatch()
 
     const validateSteps = () => {
         console.log("Tıklandı!");
         const { title, description, interviewDuration, jobLocation, questions } = formDataState;
-    
-        // Hata mesajları için başlangıç durumunu belirle
         let errors = {};
         let buttonDisabled = false;
     
         if (currentStepStatus === 1) {
-            // İlk adımda doldurulması gereken alanları kontrol et
             const requiredFields = {
                 "Title": title,
                 "Description": description,
@@ -95,15 +48,12 @@ function Page() {
                 }
             });
         } else if (currentStepStatus === 2) {
-            // İkinci adımda questions alanını kontrol et
             const emptyQuestions = questions.filter((item) => !item.question.trim());
             if (emptyQuestions.length > 0) {
                 errors["questions"] = `Please fill in all question fields!`;
                 buttonDisabled = true;
             }
         }
-    
-        // Hata mesajlarını güncelle
         setErrorMessage(errors);
     
         console.log("Validation Errors:", errors);
@@ -115,8 +65,6 @@ function Page() {
     const nextButtonHandleClick = () => {
         const isValidationFailed = validateSteps();
         if (isValidationFailed) return; 
-    
-        // Geçerli adımı arttır
         dispatch(setFormData(formDataState));
         setCurrentStepStatus((prev) => prev + 1);
     };
@@ -137,15 +85,16 @@ function Page() {
             questions: [...(formDataState?.questions || [])],
           };
       
-          // Firestore'a veri ekleme
-          const response = await addDoc(collection(storage, "talentrank"), doc);
+          const response = await updateDocById(data?.id, doc);
           console.log("Document successfully added with ID: ", response);
+          alert("Updated Success!")
           if(response){
             router.push("/")
           }
         } catch (error) {
-          console.error("Error adding document:", error);
-          throw new Error("Belge eklenirken bir hata oluştu.");
+          console.error("Error updating document:", error);
+          alert("We have some problems sorry :(")
+          throw new Error("Belge güncellenirken bir hata oluştu.");
         }
       };
 
@@ -200,4 +149,4 @@ function Page() {
     )
 }
 
-export default Page
+export default EditPageForm

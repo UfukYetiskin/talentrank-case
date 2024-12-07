@@ -4,13 +4,13 @@ import { getFirestore } from 'firebase/firestore';
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDe9ocr18oYqqEraSbPmStepxicRQ9STLo",
-  authDomain: "talentrank-b1592.firebaseapp.com",
-  projectId: "talentrank-b1592",
-  storageBucket: "talentrank-b1592.firebasestorage.app",
-  messagingSenderId: "968737560532",
-  appId: "1:968737560532:web:8bf5c313024ba5c8572841",
-  measurementId: "G-7T37RGBZTX"
+  apiKey: process.env.apiKey,
+  authDomain: process.env.authDomain,
+  projectId: process.env.projectId,
+  storageBucket: process.env.storageBucket,
+  messagingSenderId: process.env.messagingSenderId,
+  appId: process.env.appId,
+  measurementId: process.env.measurementId
 };
 
 // Initialize Firebase

@@ -1,0 +1,122 @@
+.container{
+    width: 768px;
+    margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    border-radius: 5px;
+    padding: 1.5rem 1rem;
+
+    h1{
+        font-size: 1.4rem;
+        font-weight: 400;
+
+    }
+    .first-step-details{
+        border: 1px solid #e3dffa;
+        width: 100%;
+
+        h1{
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-bottom: 1px solid #e3dffa;
+            padding: 1rem;
+        }
+        h2{
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 1rem;
+        }
+
+        p{
+            padding-left: 1rem;
+        }
+
+        .description{
+            min-height: 250px;
+            height: auto;
+            padding-left: 1rem;
+            word-break: break-word;
+        }
+    }
+
+    .questions-list{
+        border: 1px solid #e3dffa;
+        width: 100%;
+        margin-top: 1rem;
+        position: relative;
+
+
+        h2{
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        button{
+            position: absolute;
+            right: 1rem;
+            top: 1.4rem;
+
+        }
+        .question {
+            border: 1px solid #eaeaea;
+            padding: 1.2rem;
+            margin: 1rem 0.7rem;
+
+            h2{
+                font-size: 1.4rem;
+                font-weight: 600;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            p{
+                min-height: 125px;
+                height: auto;
+                padding: 1rem 0.5rem;
+                font-size: 0.9rem;
+                margin-bottom: 1rem;
+                word-break: break-word;
+                border: 1px solid darkgray;
+                border-radius: 5px;
+                
+            }
+
+            div{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                span{
+                    font-weight: 600;
+                    font-size: 0.9rem;
+                    width: 100px;
+                    word-break: word-break;
+                    display: block;
+                }
+
+                input{
+                    accent-color: gray;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media (max-width: 768px) {
+    .container{
+        width: 640px;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .container{
+        width: 100%;
+        margin: 1rem 1rem;
+    }
+}
